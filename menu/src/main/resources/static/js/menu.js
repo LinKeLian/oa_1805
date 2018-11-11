@@ -191,6 +191,7 @@ var setting = {
 		onSelected:showToForm,
 		onDrop:dropNode,
 		beforeRemove:beforeRemoveNode
+		// onRemove: removeNode
 	}
 		
 };

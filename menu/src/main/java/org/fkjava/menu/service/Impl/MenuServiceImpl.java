@@ -47,6 +47,7 @@ public class MenuServiceImpl implements MenuService {
 			//有上级菜单，根据上级菜单检查是否有重复
 			//select * from menu where menu.getName() and menu.getParent()
 			old = this.menuDao.findByNameAndParent(menu.getName(),menu.getParent());
+			
 		}else {
 			//没有上级菜单，则直接找parent_id为null的，检查是否有重复
 			old = this.menuDao.findByNameAndParentNull(menu.getName());	
@@ -56,12 +57,14 @@ public class MenuServiceImpl implements MenuService {
 			//跟据名称查询到数据库里面的菜单，但是两者的id不同
 			throw new IllegalArgumentException("菜单的名字不能重复");
 		}
+		
+		
+		
 		//2、根据选取的角色ID，查询角色，解决角色KEY相同的问题
 		List<String> roelsIds = new LinkedList<>();
 		if(menu.getRoles() == null) {
 			menu.setRoles(new LinkedList<>());
 		}
-		
 		/**
 		 * roles.stream()//转换为流式API
 				.map((role) ->{
@@ -81,13 +84,11 @@ public class MenuServiceImpl implements MenuService {
 		
 		menu.getRoles().clear();
 		menu.getRoles().addAll(set);
-		
 		//3、设置排序的序号（菜单可以拖动顺序）
 		//找到同级最大的number，然后加10000000，就形成一个新的number作为当前菜单的number
 		//如果是修改，则不需要查询
-		if(old != null) {
+		if (old != null) {
 			menu.setNumber(old.getNumber());
-			
 		}else {
 			Double maxNumber;
 			if(menu.getParent() == null) {
@@ -109,9 +110,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public List<Menu> findTopMenus() {
 		List<Menu> list = this.menuDao.findByParentNullOrderByNumber();
-		for(Menu menus : list) {
-			System.out.println("menus:" + menus);
-		}
+		
 		return list;
 	}
 	@Override

@@ -36,11 +36,12 @@ public class MenuController {
 		return mav;
 	}
 	//如果客户端要求返回JSON的时候，调用下面这个方法
-		@GetMapping(produces = "application/json")
-		@ResponseBody
-		public List<Menu> findTopMenus(){	
-			return this.menuService.findTopMenus();
-		}
+	@GetMapping(produces = "application/json")
+	@ResponseBody
+	public List<Menu> findTopMenus(){	
+		return this.menuService.findTopMenus();
+	}
+		
 	@PostMapping
 	public String save(Menu menu) {
 		this.menuService.save(menu);
