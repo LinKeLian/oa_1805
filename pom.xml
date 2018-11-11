@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.0.RELEASE</version>
+  </parent>
+  <groupId>org.fkjava</groupId>
+  <artifactId>oa</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <!-- 项目属性 -->
+	<properties>
+		<!-- 指定JDK版本 -->
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+
+		<!-- 指定字符编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+  
+  <build>
+		<plugins>
+			<!-- 编译插件设置为3.8.0，才能使用Java 10和Java 11 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!-- 如果Spring Boot版本比较旧，需要自己设置version为3.8.0 -->
+			</plugin>
+		</plugins>
+	</build>
+  <modules>
+  	<module>common</module>
+  	<module>identity</module>
+  	<module>menu</module>
+  </modules>
+</project>
