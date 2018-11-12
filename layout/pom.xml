@@ -26,12 +26,6 @@
 			<scope>runtime</scope>
 			<version>5.1.47</version>
 		</dependency>
-		<!-- 加入前端需要的webjars，就是一堆的css，js、字体、图片 -->
-  		<dependency>
-  			<groupId>org.webjars.bower</groupId>
-  			<artifactId>bootstrap</artifactId>
-  			<version>3.3.7</version>
-  		</dependency>
 		
 		<!-- 加入Servlet API的依赖 -->
 		<dependency>
@@ -58,8 +52,14 @@
 			<!-- 可选的，必须设置为true，才能实现热部署 -->
 			<optional>true</optional>
 		</dependency>
-  
-  
+  		
+  		<!-- 使用页面装饰器，对所有的页面增加相应的装饰效果 -->
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+  	
   </dependencies>
   
   

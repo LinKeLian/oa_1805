@@ -9,10 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>角色管理</title>
-<link rel="stylesheet" href="${ctx }/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="${ctx }/static/css/fkjava.css"/>
-<script type="text/javascript" src="${ctx }/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx }/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 <style type="text/css">
 .role:hover
 {

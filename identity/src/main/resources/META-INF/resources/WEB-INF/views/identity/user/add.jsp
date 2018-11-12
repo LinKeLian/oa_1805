@@ -7,11 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>编辑用户信息</title>
-<link rel="stylesheet" href="${ctx }/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="${ctx }/static/css/fkjava.css"/>
-<script type="text/javascript" src="${ctx }/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx }/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${ctx }/static/js/fkjava.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -21,8 +16,7 @@
 			编辑用户信息
 		</div>
 		<div class="panel-body">
-		
-			<form class="form-horizontal" 
+			<form class="form-horizontal select-role-form" 
 				action="${ctx }/identity/user" 
 				method="post" 
 				enctype="multipart/form-data">
@@ -85,7 +79,6 @@
 					    	<div class="row">
 						    	<div class="col-xs-5 roles selected-roles">
 						    		<ul>
-									<%--user.roles是查看id_user里面除了普通角色的角色 --%>
 						    			<c:forEach items="${user.roles }" var="r">
 						    				<c:if test="${ not r.fixed }">
 						    				<li>
@@ -106,14 +99,16 @@
 						    	</div>
 						    	<div class="col-xs-5 roles unselect-roles">
 						    		<ul>
-									<%--roles是查看id_role中除了普通用户的角色 --%>
 						    			<c:forEach items="${roles }" var="r">
+						    				<%-- 因为重写了equals和hashCode，才可以使用contains判断r是否在user里面 --%>
+						    				<c:if test="${not user.roles.contains(r) }">
 						    				<li>
 						    					<label>
 						    						<input type="checkbox" name="roles[0].id" value="${r.id }"/>
 						    						${r.name }
 						    					</label>
 						    				</li>
+						    				</c:if>
 						    			</c:forEach>
 						    		</ul>
 						    	</div>
@@ -131,10 +126,7 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-	
-	
-	</script>
+	<script type="text/javascript" src="${ctx }/static/js/fkjava.js"></script>
 </div>
 </body>
 </html>

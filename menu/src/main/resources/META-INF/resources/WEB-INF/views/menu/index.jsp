@@ -10,12 +10,9 @@
 <meta charset="UTF-8">
 <title>菜单管理</title>
 									
-<link rel="stylesheet" href="${ctx }/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="${ctx }/static/css/fkjava.css"/>
+
 <%-- 所有放到static、public、resources里面的文件，都是在根目录的 --%>
 <link rel="stylesheet" href="${ctx }/zTree/css/zTreeStyle/zTreeStyle.css"/>
-<script type="text/javascript" src="${ctx }/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx }/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 <%-- async="async"表示异步加载js --%>
 <script type="text/javascript" src="${ctx }/zTree/js/jquery.ztree.all.min.js"></script>
 
