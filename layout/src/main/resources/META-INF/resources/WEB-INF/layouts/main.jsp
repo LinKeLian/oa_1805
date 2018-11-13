@@ -18,6 +18,13 @@
     
 	<script type="text/javascript" src="${ctx }/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="${ctx }/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
+		<%--把CSRF的验证码放到HTML头里面保存起来 --%>
+		<%--使用AJAX的时候，必须要设置请求头，请求头 --%>
+		<meta name="_csrf" content="${_csrf.token}"/>
+		<meta name="_csrf_header" content="${_csrf.headerName}"/>
+		
+		<script type="text/javascript" src="${ctx }/static/js/fkjava.js"></script>
+		
 		
 		<sitemesh:write property="head"/>
 	

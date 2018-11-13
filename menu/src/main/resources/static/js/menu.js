@@ -116,6 +116,10 @@ var dropNode = function(event, treeId, treeNodes, targetNode, moveType){
 		}
 	});
 };
+
+
+
+
 //显示删除按钮
 var showRemoveBtn = function(treeId, treeNode) {
 	// 没有下级菜单，可以删除

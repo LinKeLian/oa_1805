@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 // <li><a href="index.html#">二级菜单</a></li>
 				for( var j = 0; j < menu.children.length; j ++ ){
-					var item = `<li><a href="${menu.children[j].url}">${menu.children[j].name}</a></li>`;
+					var item = `<li><a href="/${menu.children[j].url}">${menu.children[j].name}</a></li>`;
 					html += item;
 				}
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -206,5 +207,12 @@ public class IndentityServiceImpl implements IdentityService{
 		}
 		
 	}
-
+	
+	@Override
+	public Optional<User> findByLoginName(String loginName) {
+		User user = this.userDao.findByLoginName(loginName);
+		// 把查询到的User转换为Optional
+		Optional<User> op = Optional.ofNullable(user);
+		return op;
+	}
 }

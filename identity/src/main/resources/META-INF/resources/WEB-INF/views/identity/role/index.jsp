@@ -107,6 +107,9 @@ $(function(){
 				<%-- 角色修改的表单 --%>
 				<form action="" method="post" class="form-horizontal">
 					<input type="hidden" name="id" />
+					
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					
 					<div class="col-sm-12">
 						<div class="form-group">
 						    <label for="inputName" class="col-sm-2 control-label">角色名称</label>

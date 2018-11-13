@@ -1,6 +1,8 @@
 package org.fkjava.identity.service;
 
 
+import java.util.Optional;
+
 import org.fkjava.identity.domain.User;
 import org.springframework.data.domain.Page;
 
@@ -21,6 +23,8 @@ public interface IdentityService {
 	 * @param id
 	 */
 	void disable(String id);
+
+	Optional<User> findByLoginName(String loginName);
 
 	
 

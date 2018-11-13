@@ -34,7 +34,11 @@
 			</div>
 			<div class="col-xs-12 col-sm-8 form-container">
 				<form action="" method="post" class="form-horizontal">
+				
 					<input type="hidden" name="id" id="id"/>
+					 <input type="hidden"
+				name="${_csrf.parameterName}"
+				value="${_csrf.token}"/>
 					<div class="col-sm-12">
 						<div class="form-group"> 
 						    <label for="inputName" class="col-sm-2 control-label">上级菜单</label>
@@ -150,7 +154,6 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="${ctx }/static/js/fkjava.js"></script>
 <script type="text/javascript">
 var moveURL = "${ctx}/menu/move";
 var loadURL = "${ctx}/menu";
