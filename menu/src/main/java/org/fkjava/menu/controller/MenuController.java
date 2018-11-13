@@ -3,9 +3,7 @@ package org.fkjava.menu.controller;
 import java.util.List;
 
 import org.fkjava.common.data.domain.Result;
-import org.fkjava.identity.UserHolder;
 import org.fkjava.identity.domain.Role;
-import org.fkjava.identity.domain.User;
 import org.fkjava.identity.service.RoleService;
 import org.fkjava.menu.domain.Menu;
 import org.fkjava.menu.service.MenuService;
@@ -68,13 +66,9 @@ public class MenuController {
 	@GetMapping(value="menus",produces = "application/json")
 	@ResponseBody
 	public List<Menu> findMyMenus(){	
-		//找当前用户的菜单	
-		User user = UserHolder.get();
-		System.out.println(user);
-		System.out.println(user.getId());
-		System.out.println(user.getName());
+		
 		//TODO当前暂时没有用户，所以直接查询所有的菜单
-		return this.menuService.findTopMenus();
+		return this.menuService.findMyMenus();
 	}
 	
 }

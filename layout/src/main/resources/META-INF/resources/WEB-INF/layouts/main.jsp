@@ -61,8 +61,15 @@
 					<li><a href="index.html#">设置</a></li>
 					<li><a href="index.html#">个人</a></li>
 					<li><a href="index.html#">帮助</a></li>
-					<li><a href="index.html#">退出</a></li>
+					<li><a href="#" onclick="$('#logout-form').submit();">退出</a></li>
 				</ul>
+				<%--隐藏的退出功能的表单，退出必须要POST方式提交 --%>
+				<form id="logout-form" action="${ctx }/security/do-logout" method="post" style="display:none;">
+					<input type="hidden"
+						name="${_csrf.parameterName}"
+						value="${_csrf.token}"/>
+				</form>
+				
 				<!-- 搜索框可以留着，因为可以让所有的页面都使用相同的搜索框 -->
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search...">

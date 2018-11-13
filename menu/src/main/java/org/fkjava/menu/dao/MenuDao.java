@@ -2,6 +2,7 @@ package org.fkjava.menu.dao;
 
 import java.util.List;
 
+import org.fkjava.identity.domain.Role;
 import org.fkjava.menu.domain.Menu;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,5 +44,7 @@ public interface MenuDao extends JpaRepository<Menu, String>{
 	 * @return
 	 */
 	Page<Menu> findByParentAndNumberGreaterThanOrderByNumberAsc(Menu parent, Double number, Pageable pageable);
+
+	List<Menu> findByRolesIn(List<Role> roles);
 
 }

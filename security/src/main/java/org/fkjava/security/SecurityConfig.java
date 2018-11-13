@@ -47,8 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 				// 此页面不需要有对应的JSP，而且也不需要有对应代码，只要URL
 				// 这个URL是Spring Security使用的，用来接收请求参数、调用Spring Security的鉴权模块
 				.loginProcessingUrl("/security/do-login")// 处理登录请求的URL
+				// 在登录成功以后，会判断Session里面是否有记录之前访问的URL，如果有则使用之前的URL继续访问
+				// 如果没有则使用defaultSuccessUrl
+				// .defaultSuccessUrl("/index")//默认的登录成功页面
 				.usernameParameter("loginName")// 登录名的参数名
 				.passwordParameter("password")// 密码的参数名称
+				.and().logout()//配置退出登录
+				.logoutUrl("/security/do-logout")
+				// .logoutSuccessUrl("/")
 				// .and().httpBasic()// 也可以基于HTTP的标准验证方法（弹出对话框）
 				.and().csrf()// 激活防跨站攻击功能
 		;
@@ -67,6 +73,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 		// 动态注册URL和视图的映射关闭，解决控制器里面几乎没有代码的问题。
 		registry.addViewController("/security/login")//
 				.setViewName("security/login");
+		//添加首页
+		registry.addViewController("/idenx").setViewName("security/index");
+		// 欢迎页，访问根目录重定向到一个首页
+		// registry.addViewController("/").setViewName("security/index");
+		registry.addRedirectViewController("/", "/index");
 	}
 	
 	public static void main(String[] args) {
