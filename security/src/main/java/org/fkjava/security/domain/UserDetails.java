@@ -1,4 +1,4 @@
-package org.fkjava.layout.domain;
+package org.fkjava.security.domain;
 
 import java.util.Collection;
  import org.fkjava.identity.domain.User;

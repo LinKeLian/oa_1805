@@ -1,11 +1,13 @@
-package org.fkjava.layout;
+package org.fkjava.security;
 
+import org.fkjava.security.interceptors.UserHolderInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,6 +16,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan("org.fkjava")
 @EnableJpaRepositories
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer{
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new UserHolderInterceptor())//
+			.addPathPatterns("/**")//
+			//默认Spring Security的拦截器，已经在其他的拦截器之前
+			//所以不使用order也是可以有效的
+			//如果不能正常获取到User（通过UserHolder），那么就需要修改顺序
+			//.order(Integer.MAX_VALUE)//排到最后面
+		;
+	}
+	
+	
 	
 	//配置基于HTTP的安全控制
 	@Override
