@@ -70,6 +70,10 @@ public class LayoutConfig implements WebMvcConfigurer {
 		
 		// 排除某些路径不要装饰
 		//initParameters.put("exclude", "/identity/role,/identity/role/*");
+		
+		//包含错误页面也一并装饰
+		initParameters.put("includeErrorPages", "true");
+		
 
 		bean.setInitParameters(initParameters);
 
