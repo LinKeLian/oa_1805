@@ -2,12 +2,13 @@
 <%--这里可以写JSP中的任何代码，并且可以定义接收参数！ --%>
 <%--tag指令是JSP2.0的时候提供的一个标签指令，把HTML内容作为标签库来使用，避免在java代码中嵌入HTML --%>
 <%--attirbute指令用于在JSP Tag文件中定义参数 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--引入jsp --%>
 <c:set var="ctx" value="${pageContext.request.contextPath }" scope="application"></c:set>
 <%@ attribute name="url" required="ture" type="java.lang.String"%>
 <%@ attribute name="page" required="ture" type="org.springframework.data.domain.Page"%>
+
+<c:if test="${not empty page }">
 <nav aria-label="Page navigation">
 	<ul class="pagination">
 		<li>
@@ -41,3 +42,7 @@
         </li>
     </ul> 
 </nav>
+</c:if>
+<c:if test="${empty page }">
+	没有数据
+</c:if>
