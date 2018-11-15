@@ -17,6 +17,12 @@ public class UserHolderInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		//获取Spring Security 里面保存的UserDetails对象，并且转换为User存储到UserHolder里面
 		
+		if(SecurityContextHolder//
+				.getContext()//
+				.getAuthentication() == null) {
+			return true;
+		}
+		
 		Object principal = SecurityContextHolder//
 				.getContext()//
 				.getAuthentication()//

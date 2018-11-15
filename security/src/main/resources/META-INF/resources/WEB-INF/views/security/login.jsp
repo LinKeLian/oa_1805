@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,6 +14,13 @@
 		<c:if test="${param.logout eq '' }">
 			<div class="alert alert-success" role="alert">成功退出登录</div>
 		</c:if>
+		<c:if test="${param.error eq '' or not empty sessionScope['SPRING_SECURITY_LAST_EXCEPTION'] }">
+			<div class="alert alert-danger" role="alert">
+				<strong>登录失败</strong>
+				${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message }
+			</div>
+		</c:if>
+		
 		<form class="form-signin" action="${ctx }/security/do-login" method="post">
 		    <h2 class="form-signin-heading">请登录</h2>
 		    <label for="inputLoginName" class="sr-only">登录名</label>
@@ -21,7 +29,8 @@
 		    	placeholder="登录名" 
 		    	required="required" 
 		    	autofocus="autofocus"
-		    	name="loginName"/>
+		    	name="loginName"
+		    	value="${sessionScope.loginName }"/>
 		    <label for="inputPassword" class="sr-only">密码</label>
 		    <input type="password" 
 		    	id="inputPassword" 

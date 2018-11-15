@@ -66,9 +66,9 @@ public class MenuController {
 	@GetMapping(value="menus",produces = "application/json")
 	@ResponseBody
 	public List<Menu> findMyMenus(){	
-		
-		//TODO当前暂时没有用户，所以直接查询所有的菜单
+		// 找当前用户的菜单
 		return this.menuService.findMyMenus();
+		
 	}
 	
 }

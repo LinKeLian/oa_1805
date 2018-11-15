@@ -43,5 +43,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   	<module>menu</module>
   	<module>layout</module>
   	<module>security</module>
+  	<module>storage</module>
   </modules>
 </project>

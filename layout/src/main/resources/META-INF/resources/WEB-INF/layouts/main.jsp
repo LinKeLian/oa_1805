@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -59,7 +60,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html#">首页</a></li>
 					<li><a href="index.html#">设置</a></li>
-					<li><a href="index.html#">个人</a></li>
+					<li><a href="${ctx }/identity/profile">${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.principal.name}</a></li>
 					<li><a href="index.html#">帮助</a></li>
 					<li><a href="#" onclick="$('#logout-form').submit();">退出</a></li>
 				</ul>

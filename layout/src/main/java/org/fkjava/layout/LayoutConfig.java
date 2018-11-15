@@ -8,10 +8,14 @@ import javax.servlet.DispatcherType;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.ErrorPageRegistrar;
+import org.springframework.boot.web.server.ErrorPageRegistry;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -71,7 +75,29 @@ public class LayoutConfig implements WebMvcConfigurer {
 
 		return bean;
 	}
+	
+	//配置自定义的错误页面
+	//最简单的是在静态资源目录中，创建名为error的子目录，在此文件直接放错误编号对应的html文件。
+	// 如：400.html、4xx.html、500.html等。
+	// 也可以在这个位置配置自定义的错误处理页面映射
+	// 最后也可以利用configureHandlerExceptionResolvers方法注册异常处理
+	@Bean
+	public ErrorPageRegistrar errorPageRegistrar() {
+		ErrorPageRegistrar errorPageRegistrar = new ErrorPageRegistrar() {
 
+			@Override
+			public void registerErrorPages(ErrorPageRegistry registry) {
+				
+				registry.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/layout/ex"));
+				
+			}
+			
+		};
+		
+		return errorPageRegistrar;
+	}
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(LayoutConfig.class, args);
 	}
