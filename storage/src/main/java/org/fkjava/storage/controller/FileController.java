@@ -61,7 +61,7 @@ public class FileController {
 	public ResponseEntity<StreamingResponseBody> download(@PathVariable(name = "id") String id) {
 		return null;
 	}
-
+	
 	@DeleteMapping("{id}")
 	@ResponseBody
 	public Result delete(@PathVariable(name = "id") String id) {

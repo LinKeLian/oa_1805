@@ -10,5 +10,5 @@ public interface StorageService {
 	Page<FileInfo> findFiles(String keyword, Integer number);
 
 	void save(FileInfo info, InputStream in);
-
+	
 }

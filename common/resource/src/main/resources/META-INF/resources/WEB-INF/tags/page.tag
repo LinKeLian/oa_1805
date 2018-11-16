@@ -7,8 +7,8 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" scope="application"></c:set>
 <%@ attribute name="url" required="ture" type="java.lang.String"%>
 <%@ attribute name="page" required="ture" type="org.springframework.data.domain.Page"%>
-
-<c:if test="${not empty page }">
+<%--page为空的时候，和分页按钮为空的时候 --%>
+<c:if test="${not empty page and page.totalPages ne 0}">
 <nav aria-label="Page navigation">
 	<ul class="pagination">
 		<li>
@@ -43,6 +43,6 @@
     </ul> 
 </nav>
 </c:if>
-<c:if test="${empty page }">
+<c:if test="${empty page and page.totalPages ne 0}">
 	没有数据
 </c:if>
