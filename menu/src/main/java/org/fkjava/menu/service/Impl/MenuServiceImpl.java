@@ -242,7 +242,7 @@ public class MenuServiceImpl implements MenuService {
 		// 此时得到的菜单，可能包括一级、二级、三级……等所有可能存在的等级
 		// 左侧的菜单树，其实只要两级（一级、二级）即可，并且应该返回一级、在一级里面包含二级
 		//1、根据角色查询菜单
-		List<Menu> menus = this.menuDao.findByRolesIn(roles);//使用in查询
+		List<Menu> menus = this.menuDao.findDistinctByRolesIn(roles);//使用in查询
 		
 		//准备返回的一级菜单集合
 		List<Menu> topMenus = new LinkedList<>();
