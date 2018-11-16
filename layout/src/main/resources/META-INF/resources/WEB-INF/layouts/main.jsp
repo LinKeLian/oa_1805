@@ -72,8 +72,8 @@
 				</form>
 				
 				<!-- 搜索框可以留着，因为可以让所有的页面都使用相同的搜索框 -->
-				<form class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search...">
+				<form class="navbar-form navbar-right" method="get" action="">
+					<input type="text" class="form-control" placeholder="输入关键字，按回车搜索" name="keyword" value="${param.keyword }"/>
 				</form>
 			</div>
 		</div>

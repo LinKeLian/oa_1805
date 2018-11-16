@@ -9,10 +9,16 @@
 <%@ attribute name="page" required="ture" type="org.springframework.data.domain.Page"%>
 <%--page为空的时候，和分页按钮为空的时候 --%>
 <c:if test="${not empty page and page.totalPages ne 0}">
-<nav aria-label="Page navigation">
+<c:if test="${url.indexOf('?') >= 0 }">
+	<c:set var="url" value="${ctx }${url }&pageNumber="/>
+</c:if>
+<c:if test="${url.indexOf('?') < 0 }">
+	<c:set var="url" value="${ctx }${url }?pageNumber="/>
+</c:if>
+<nav aria-label="分页导航">
 	<ul class="pagination">
 		<li>
-			<a href="${ctx }${url }?pageNumber=${page.number eq 0 ? 0 : page.number - 1}" aria-label="上一页">
+			<a href="${url }${page.number eq 0 ? 0 : page.number - 1}" aria-label="上一页">
 				<span aria-hidden="true">&laquo;</span>
 			</a>
 		</li>
@@ -33,10 +39,10 @@
 		 	<c:set var="begin" value="0"></c:set>
 		 </c:if> 
 		<c:forEach begin="${begin }" end="${end }" var="number">
-			<li class="${page.number eq number ? 'active':'' }"><a href="${ctx }${url }?pageNumber=${number}">${number + 1  }</a></li>
+			<li class="${page.number eq number ? 'active':'' }"><a href="${url }${number}">${number + 1  }</a></li>
 		</c:forEach>
 		<li>
-		    <a href="${ctx }${url }?pageNumber=${page.number ge (page.totalPages-1) ? page.totalPages-1 : page.number+1}" aria-label="下一页">
+		    <a href="${url }${page.number ge (page.totalPages-1) ? page.totalPages-1 : page.number+1}" aria-label="下一页">
 		     	<span aria-hidden="true">&raquo;</span>
 		    </a>
         </li>
