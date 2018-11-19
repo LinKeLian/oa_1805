@@ -60,7 +60,7 @@ public class FileController {
 
 		return "redirect:/storage/file";
 	}
-
+	//notice模块的图片上传
 	@PostMapping("wangEditor")
 	@ResponseBody
 	public WangEditorResponse wangEditorUpload(@RequestParam("file") MultipartFile file) throws IOException {
@@ -80,7 +80,7 @@ public class FileController {
 		wangEditorResponse.getData().add("/storage/file/" + info.getId());// 图片下载的路径
 		return wangEditorResponse;
 	}
-
+	//notice模块的图片上传
 	public static class WangEditorResponse {
 		private int errno;
 		private List<String> data = new LinkedList<>();

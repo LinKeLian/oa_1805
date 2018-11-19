@@ -103,7 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 				// .defaultSuccessUrl("/index")//默认的登录成功页面
 				.usernameParameter("loginName")// 登录名的参数名
 				.passwordParameter("password")// 密码的参数名称
-				.failureHandler(failureHandler)//这是可以把密码回显
+				.failureHandler(failureHandler)//这是可以把登录名回显
 				.and().logout()//配置退出登录
 				.logoutUrl("/security/do-logout")
 				// .logoutSuccessUrl("/")
