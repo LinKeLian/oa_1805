@@ -50,6 +50,11 @@
 			<!-- 可选的，必须设置为true，才能实现热部署 -->
 			<optional>true</optional>
 		</dependency>
+  		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>wangEditor</artifactId>
+			<version>3.1.1</version>
+		</dependency>
   		
   </dependencies>
   
